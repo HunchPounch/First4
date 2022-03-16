@@ -18,10 +18,10 @@ public:
     CComplexVector(int dim,const char *fileName);
     CComplexVector(const CComplexVector& other);
     ~CComplexVector();
-
+    int Get_dim();
     int Get_Re(int i);
     int Get_Im(int i);
-    const char* Get_filename();
+    char* Get_filename();
     void Set_Re_Im(int value_Re, int value_Im, int i);
 
     CComplexVector& operator =(const CComplexVector &other);

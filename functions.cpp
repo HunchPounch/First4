@@ -2,42 +2,23 @@
 #include "CComplexVector1.h"
 #include "CComplexVector0.h"
 
-CComplexVector0 operator +(CComplexVector0 &A, CComplexVector0 &B){
-    if (A.n != B.n)exit(2);
-    CComplexVector0 C(A.n,"buffer");
+CComplexVector0 operator +(CComplexVector &A, CComplexVector &B){
+    if (A.Get_dim() != B.Get_dim())exit(2);
+    CComplexVector0 C(A.Get_dim(),"buffer");
 
-    for(int i=0;i<A.n; i++){
+    for(int i=0;i<A.Get_dim(); i++){
         C.Set_Re_Im(A.Get_Re(i)+B.Get_Re(i), A.Get_Im(i)+B.Get_Im(i),i);
     }
 
     return C;
 }
 
-CComplexVector0 operator -(CComplexVector0 &A, CComplexVector0 &B){
-    if (A.n != B.n)exit(1);
-    CComplexVector0 C(A.n, "buf");
-    for(int i=0;i<A.n; i++){
+CComplexVector0 operator -(CComplexVector &A, CComplexVector &B){
+    if (A.Get_dim() != B.Get_dim())exit(1);
+    CComplexVector0 C(A.Get_dim(), "buf");
+    for(int i=0;i<A.Get_dim(); i++){
         C.Set_Re_Im(A.Get_Re(i)- B.Get_Re(i), A.Get_Im(i) - B.Get_Im(i),i);
     }
     return C;
 }
 
-CComplexVector1 operator +(CComplexVector1 &A, CComplexVector1 &B){
-    if (A.n != B.n)exit(2);
-    CComplexVector1 C(A.n,"buffer");
-
-    for(int i=0;i<A.n; i++){
-        C.Set_Re_Im(A.Get_Re(i)+B.Get_Re(i), A.Get_Im(i)+B.Get_Im(i),i);
-    }
-
-    return C;
-}
-
-CComplexVector1 operator -(CComplexVector1 &A, CComplexVector1 &B){
-    if (A.n != B.n)exit(1);
-    CComplexVector1 C(A.n, "buf");
-    for(int i=0;i<A.n; i++){
-        C.Set_Re_Im(A.Get_Re(i)- B.Get_Re(i), A.Get_Im(i) - B.Get_Im(i),i);
-    }
-    return C;
-}

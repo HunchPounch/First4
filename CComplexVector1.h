@@ -7,7 +7,11 @@ public:
     CComplexVector1(int dim,const char *fileName):CComplexVector(dim, fileName){
     }
     int output(const char *FileName) override;
-    friend CComplexVector1 operator +(CComplexVector1 &A, CComplexVector1 &B);
-    friend CComplexVector1 operator -(CComplexVector1 &A, CComplexVector1 &B);
+    CComplexVector1(const CComplexVector& other) : CComplexVector(other){
+    }
+    using CComplexVector::operator=;
+
+    //friend CComplexVector0 operator +(CComplexVector1 &A, CComplexVector1 &B);
+    //friend CComplexVector0 operator -(CComplexVector1 &A, CComplexVector1 &B);
 
 };

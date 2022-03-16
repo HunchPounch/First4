@@ -20,6 +20,9 @@ CComplexVector::CComplexVector(int dim, const char *fileName){
 
 CComplexVector::CComplexVector(const CComplexVector& other) {
     this->n = other.n;
+    //char buffer[256];
+
+    strcpy(this->filename,other.filename);
     arr = new int* [this->n];
     if (arr == NULL) {
         exit(1);
@@ -46,7 +49,7 @@ CComplexVector::~CComplexVector(){
     delete[] arr;
 }
 
-const char* CComplexVector::Get_filename(){
+char* CComplexVector::Get_filename(){
     return filename;
 }
 
@@ -55,6 +58,9 @@ int CComplexVector::Get_Re(int i) {
 }
 int CComplexVector::Get_Im(int i) {
 	return arr[i][1];
+}
+int CComplexVector::Get_dim() {
+	return n;
 }
 
 void CComplexVector::Set_Re_Im(int value_Re, int value_Im, int i){
@@ -70,6 +76,7 @@ CComplexVector& CComplexVector::operator =(const CComplexVector &other){
         this->arr[i][0] = other.arr[i][0];
         this->arr[i][1] = other.arr[i][1];
     }
+    strcpy(this->filename,other.filename);
     return *this;
 }
 
